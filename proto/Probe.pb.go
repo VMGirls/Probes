@@ -674,19 +674,19 @@ const _ = grpc.SupportPackageIsVersion6
 // ProbeServiceClient is the client API for ProbeService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type ProbeServiceClient interface {
+type probeServiceClient interface {
 	ReportSystemState(ctx context.Context, in *State, opts ...grpc.CallOption) (*Receipt, error)
 	ReportSystemInfo(ctx context.Context, in *Host, opts ...grpc.CallOption) (*Receipt, error)
 	ReportTask(ctx context.Context, in *TaskResult, opts ...grpc.CallOption) (*Receipt, error)
 	RequestTask(ctx context.Context, in *Host, opts ...grpc.CallOption) (ProbeService_RequestTaskClient, error)
 }
 
-type ProbeServiceClient struct {
+type probeServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
 func NewProbeServiceClient(cc grpc.ClientConnInterface) ProbeServiceClient {
-	return &ProbeServiceClient{cc}
+	return &probeServiceClient{cc}
 }
 
 func (c *ProbeServiceClient) ReportSystemState(ctx context.Context, in *State, opts ...grpc.CallOption) (*Receipt, error) {
