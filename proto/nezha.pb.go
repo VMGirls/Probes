@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.25.0
 // 	protoc        v3.14.0
-// source: proto/nezha.proto
+// source: proto/Probe.proto
 
 package proto
 
@@ -51,7 +51,7 @@ type Host struct {
 func (x *Host) Reset() {
 	*x = Host{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_nezha_proto_msgTypes[0]
+		mi := &file_proto_Probe_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -64,7 +64,7 @@ func (x *Host) String() string {
 func (*Host) ProtoMessage() {}
 
 func (x *Host) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nezha_proto_msgTypes[0]
+	mi := &file_proto_Probe_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -77,7 +77,7 @@ func (x *Host) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Host.ProtoReflect.Descriptor instead.
 func (*Host) Descriptor() ([]byte, []int) {
-	return file_proto_nezha_proto_rawDescGZIP(), []int{0}
+	return file_proto_Probe_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Host) GetPlatform() string {
@@ -183,7 +183,7 @@ type State struct {
 func (x *State) Reset() {
 	*x = State{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_nezha_proto_msgTypes[1]
+		mi := &file_proto_Probe_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -196,7 +196,7 @@ func (x *State) String() string {
 func (*State) ProtoMessage() {}
 
 func (x *State) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nezha_proto_msgTypes[1]
+	mi := &file_proto_Probe_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -209,7 +209,7 @@ func (x *State) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use State.ProtoReflect.Descriptor instead.
 func (*State) Descriptor() ([]byte, []int) {
-	return file_proto_nezha_proto_rawDescGZIP(), []int{1}
+	return file_proto_Probe_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *State) GetCpu() float64 {
@@ -288,7 +288,7 @@ type Task struct {
 func (x *Task) Reset() {
 	*x = Task{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_nezha_proto_msgTypes[2]
+		mi := &file_proto_Probe_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -301,7 +301,7 @@ func (x *Task) String() string {
 func (*Task) ProtoMessage() {}
 
 func (x *Task) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nezha_proto_msgTypes[2]
+	mi := &file_proto_Probe_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -314,7 +314,7 @@ func (x *Task) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Task.ProtoReflect.Descriptor instead.
 func (*Task) Descriptor() ([]byte, []int) {
-	return file_proto_nezha_proto_rawDescGZIP(), []int{2}
+	return file_proto_Probe_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Task) GetId() uint64 {
@@ -353,7 +353,7 @@ type TaskResult struct {
 func (x *TaskResult) Reset() {
 	*x = TaskResult{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_nezha_proto_msgTypes[3]
+		mi := &file_proto_Probe_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -366,7 +366,7 @@ func (x *TaskResult) String() string {
 func (*TaskResult) ProtoMessage() {}
 
 func (x *TaskResult) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nezha_proto_msgTypes[3]
+	mi := &file_proto_Probe_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -379,7 +379,7 @@ func (x *TaskResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TaskResult.ProtoReflect.Descriptor instead.
 func (*TaskResult) Descriptor() ([]byte, []int) {
-	return file_proto_nezha_proto_rawDescGZIP(), []int{3}
+	return file_proto_Probe_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *TaskResult) GetId() uint64 {
@@ -428,7 +428,7 @@ type Receipt struct {
 func (x *Receipt) Reset() {
 	*x = Receipt{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_nezha_proto_msgTypes[4]
+		mi := &file_proto_Probe_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -441,7 +441,7 @@ func (x *Receipt) String() string {
 func (*Receipt) ProtoMessage() {}
 
 func (x *Receipt) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nezha_proto_msgTypes[4]
+	mi := &file_proto_Probe_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -454,7 +454,7 @@ func (x *Receipt) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Receipt.ProtoReflect.Descriptor instead.
 func (*Receipt) Descriptor() ([]byte, []int) {
-	return file_proto_nezha_proto_rawDescGZIP(), []int{4}
+	return file_proto_Probe_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Receipt) GetProced() bool {
@@ -464,9 +464,9 @@ func (x *Receipt) GetProced() bool {
 	return false
 }
 
-var File_proto_nezha_proto protoreflect.FileDescriptor
+var File_proto_Probe_proto protoreflect.FileDescriptor
 
-var file_proto_nezha_proto_rawDesc = []byte{
+var file_proto_Probe_proto_rawDesc = []byte{
 	0x0a, 0x11, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6e, 0x65, 0x7a, 0x68, 0x61, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x12, 0x05, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xe0, 0x02, 0x0a, 0x04, 0x48,
 	0x6f, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x18,
@@ -541,34 +541,34 @@ var file_proto_nezha_proto_rawDesc = []byte{
 }
 
 var (
-	file_proto_nezha_proto_rawDescOnce sync.Once
-	file_proto_nezha_proto_rawDescData = file_proto_nezha_proto_rawDesc
+	file_proto_Probe_proto_rawDescOnce sync.Once
+	file_proto_Probe_proto_rawDescData = file_proto_Probe_proto_rawDesc
 )
 
-func file_proto_nezha_proto_rawDescGZIP() []byte {
-	file_proto_nezha_proto_rawDescOnce.Do(func() {
-		file_proto_nezha_proto_rawDescData = protoimpl.X.CompressGZIP(file_proto_nezha_proto_rawDescData)
+func file_proto_Probe_proto_rawDescGZIP() []byte {
+	file_proto_Probe_proto_rawDescOnce.Do(func() {
+		file_proto_Probe_proto_rawDescData = protoimpl.X.CompressGZIP(file_proto_Probe_proto_rawDescData)
 	})
-	return file_proto_nezha_proto_rawDescData
+	return file_proto_Probe_proto_rawDescData
 }
 
-var file_proto_nezha_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_proto_nezha_proto_goTypes = []interface{}{
+var file_proto_Probe_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_proto_Probe_proto_goTypes = []interface{}{
 	(*Host)(nil),       // 0: proto.Host
 	(*State)(nil),      // 1: proto.State
 	(*Task)(nil),       // 2: proto.Task
 	(*TaskResult)(nil), // 3: proto.TaskResult
 	(*Receipt)(nil),    // 4: proto.Receipt
 }
-var file_proto_nezha_proto_depIdxs = []int32{
-	1, // 0: proto.NezhaService.ReportSystemState:input_type -> proto.State
-	0, // 1: proto.NezhaService.ReportSystemInfo:input_type -> proto.Host
-	3, // 2: proto.NezhaService.ReportTask:input_type -> proto.TaskResult
-	0, // 3: proto.NezhaService.RequestTask:input_type -> proto.Host
-	4, // 4: proto.NezhaService.ReportSystemState:output_type -> proto.Receipt
-	4, // 5: proto.NezhaService.ReportSystemInfo:output_type -> proto.Receipt
-	4, // 6: proto.NezhaService.ReportTask:output_type -> proto.Receipt
-	2, // 7: proto.NezhaService.RequestTask:output_type -> proto.Task
+var file_proto_Probe_proto_depIdxs = []int32{
+	1, // 0: proto.ProbeService.ReportSystemState:input_type -> proto.State
+	0, // 1: proto.ProbeService.ReportSystemInfo:input_type -> proto.Host
+	3, // 2: proto.ProbeService.ReportTask:input_type -> proto.TaskResult
+	0, // 3: proto.ProbeService.RequestTask:input_type -> proto.Host
+	4, // 4: proto.ProbeService.ReportSystemState:output_type -> proto.Receipt
+	4, // 5: proto.ProbeService.ReportSystemInfo:output_type -> proto.Receipt
+	4, // 6: proto.ProbeService.ReportTask:output_type -> proto.Receipt
+	2, // 7: proto.ProbeService.RequestTask:output_type -> proto.Task
 	4, // [4:8] is the sub-list for method output_type
 	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -576,13 +576,13 @@ var file_proto_nezha_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_proto_nezha_proto_init() }
-func file_proto_nezha_proto_init() {
-	if File_proto_nezha_proto != nil {
+func init() { file_proto_Probe_proto_init() }
+func file_proto_Probe_proto_init() {
+	if File_proto_Probe_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_proto_nezha_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_Probe_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Host); i {
 			case 0:
 				return &v.state
@@ -594,7 +594,7 @@ func file_proto_nezha_proto_init() {
 				return nil
 			}
 		}
-		file_proto_nezha_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_Probe_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*State); i {
 			case 0:
 				return &v.state
@@ -606,7 +606,7 @@ func file_proto_nezha_proto_init() {
 				return nil
 			}
 		}
-		file_proto_nezha_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_Probe_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Task); i {
 			case 0:
 				return &v.state
@@ -618,7 +618,7 @@ func file_proto_nezha_proto_init() {
 				return nil
 			}
 		}
-		file_proto_nezha_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_Probe_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TaskResult); i {
 			case 0:
 				return &v.state
@@ -630,7 +630,7 @@ func file_proto_nezha_proto_init() {
 				return nil
 			}
 		}
-		file_proto_nezha_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_proto_Probe_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Receipt); i {
 			case 0:
 				return &v.state
@@ -647,20 +647,20 @@ func file_proto_nezha_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_proto_nezha_proto_rawDesc,
+			RawDescriptor: file_proto_Probe_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_nezha_proto_goTypes,
-		DependencyIndexes: file_proto_nezha_proto_depIdxs,
-		MessageInfos:      file_proto_nezha_proto_msgTypes,
+		GoTypes:           file_proto_Probe_proto_goTypes,
+		DependencyIndexes: file_proto_Probe_proto_depIdxs,
+		MessageInfos:      file_proto_Probe_proto_msgTypes,
 	}.Build()
-	File_proto_nezha_proto = out.File
-	file_proto_nezha_proto_rawDesc = nil
-	file_proto_nezha_proto_goTypes = nil
-	file_proto_nezha_proto_depIdxs = nil
+	File_proto_Probe_proto = out.File
+	file_proto_Probe_proto_rawDesc = nil
+	file_proto_Probe_proto_goTypes = nil
+	file_proto_Probe_proto_depIdxs = nil
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -671,57 +671,57 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// NezhaServiceClient is the client API for NezhaService service.
+// ProbeServiceClient is the client API for ProbeService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type NezhaServiceClient interface {
+type ProbeServiceClient interface {
 	ReportSystemState(ctx context.Context, in *State, opts ...grpc.CallOption) (*Receipt, error)
 	ReportSystemInfo(ctx context.Context, in *Host, opts ...grpc.CallOption) (*Receipt, error)
 	ReportTask(ctx context.Context, in *TaskResult, opts ...grpc.CallOption) (*Receipt, error)
-	RequestTask(ctx context.Context, in *Host, opts ...grpc.CallOption) (NezhaService_RequestTaskClient, error)
+	RequestTask(ctx context.Context, in *Host, opts ...grpc.CallOption) (ProbeService_RequestTaskClient, error)
 }
 
-type nezhaServiceClient struct {
+type ProbeServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewNezhaServiceClient(cc grpc.ClientConnInterface) NezhaServiceClient {
-	return &nezhaServiceClient{cc}
+func NewProbeServiceClient(cc grpc.ClientConnInterface) ProbeServiceClient {
+	return &ProbeServiceClient{cc}
 }
 
-func (c *nezhaServiceClient) ReportSystemState(ctx context.Context, in *State, opts ...grpc.CallOption) (*Receipt, error) {
+func (c *ProbeServiceClient) ReportSystemState(ctx context.Context, in *State, opts ...grpc.CallOption) (*Receipt, error) {
 	out := new(Receipt)
-	err := c.cc.Invoke(ctx, "/proto.NezhaService/ReportSystemState", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.ProbeService/ReportSystemState", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *nezhaServiceClient) ReportSystemInfo(ctx context.Context, in *Host, opts ...grpc.CallOption) (*Receipt, error) {
+func (c *ProbeServiceClient) ReportSystemInfo(ctx context.Context, in *Host, opts ...grpc.CallOption) (*Receipt, error) {
 	out := new(Receipt)
-	err := c.cc.Invoke(ctx, "/proto.NezhaService/ReportSystemInfo", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.ProbeService/ReportSystemInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *nezhaServiceClient) ReportTask(ctx context.Context, in *TaskResult, opts ...grpc.CallOption) (*Receipt, error) {
+func (c *ProbeServiceClient) ReportTask(ctx context.Context, in *TaskResult, opts ...grpc.CallOption) (*Receipt, error) {
 	out := new(Receipt)
-	err := c.cc.Invoke(ctx, "/proto.NezhaService/ReportTask", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.ProbeService/ReportTask", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *nezhaServiceClient) RequestTask(ctx context.Context, in *Host, opts ...grpc.CallOption) (NezhaService_RequestTaskClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_NezhaService_serviceDesc.Streams[0], "/proto.NezhaService/RequestTask", opts...)
+func (c *ProbeServiceClient) RequestTask(ctx context.Context, in *Host, opts ...grpc.CallOption) (ProbeService_RequestTaskClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ProbeService_serviceDesc.Streams[0], "/proto.ProbeService/RequestTask", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &nezhaServiceRequestTaskClient{stream}
+	x := &ProbeServiceRequestTaskClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -731,16 +731,16 @@ func (c *nezhaServiceClient) RequestTask(ctx context.Context, in *Host, opts ...
 	return x, nil
 }
 
-type NezhaService_RequestTaskClient interface {
+type ProbeService_RequestTaskClient interface {
 	Recv() (*Task, error)
 	grpc.ClientStream
 }
 
-type nezhaServiceRequestTaskClient struct {
+type ProbeServiceRequestTaskClient struct {
 	grpc.ClientStream
 }
 
-func (x *nezhaServiceRequestTaskClient) Recv() (*Task, error) {
+func (x *ProbeServiceRequestTaskClient) Recv() (*Task, error) {
 	m := new(Task)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -748,133 +748,133 @@ func (x *nezhaServiceRequestTaskClient) Recv() (*Task, error) {
 	return m, nil
 }
 
-// NezhaServiceServer is the server API for NezhaService service.
-type NezhaServiceServer interface {
+// ProbeServiceServer is the server API for ProbeService service.
+type ProbeServiceServer interface {
 	ReportSystemState(context.Context, *State) (*Receipt, error)
 	ReportSystemInfo(context.Context, *Host) (*Receipt, error)
 	ReportTask(context.Context, *TaskResult) (*Receipt, error)
-	RequestTask(*Host, NezhaService_RequestTaskServer) error
+	RequestTask(*Host, ProbeService_RequestTaskServer) error
 }
 
-// UnimplementedNezhaServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedNezhaServiceServer struct {
+// UnimplementedProbeServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedProbeServiceServer struct {
 }
 
-func (*UnimplementedNezhaServiceServer) ReportSystemState(context.Context, *State) (*Receipt, error) {
+func (*UnimplementedProbeServiceServer) ReportSystemState(context.Context, *State) (*Receipt, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReportSystemState not implemented")
 }
-func (*UnimplementedNezhaServiceServer) ReportSystemInfo(context.Context, *Host) (*Receipt, error) {
+func (*UnimplementedProbeServiceServer) ReportSystemInfo(context.Context, *Host) (*Receipt, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReportSystemInfo not implemented")
 }
-func (*UnimplementedNezhaServiceServer) ReportTask(context.Context, *TaskResult) (*Receipt, error) {
+func (*UnimplementedProbeServiceServer) ReportTask(context.Context, *TaskResult) (*Receipt, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReportTask not implemented")
 }
-func (*UnimplementedNezhaServiceServer) RequestTask(*Host, NezhaService_RequestTaskServer) error {
+func (*UnimplementedProbeServiceServer) RequestTask(*Host, ProbeService_RequestTaskServer) error {
 	return status.Errorf(codes.Unimplemented, "method RequestTask not implemented")
 }
 
-func RegisterNezhaServiceServer(s *grpc.Server, srv NezhaServiceServer) {
-	s.RegisterService(&_NezhaService_serviceDesc, srv)
+func RegisterProbeServiceServer(s *grpc.Server, srv ProbeServiceServer) {
+	s.RegisterService(&_ProbeService_serviceDesc, srv)
 }
 
-func _NezhaService_ReportSystemState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProbeService_ReportSystemState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(State)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NezhaServiceServer).ReportSystemState(ctx, in)
+		return srv.(ProbeServiceServer).ReportSystemState(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.NezhaService/ReportSystemState",
+		FullMethod: "/proto.ProbeService/ReportSystemState",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NezhaServiceServer).ReportSystemState(ctx, req.(*State))
+		return srv.(ProbeServiceServer).ReportSystemState(ctx, req.(*State))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NezhaService_ReportSystemInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProbeService_ReportSystemInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Host)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NezhaServiceServer).ReportSystemInfo(ctx, in)
+		return srv.(ProbeServiceServer).ReportSystemInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.NezhaService/ReportSystemInfo",
+		FullMethod: "/proto.ProbeService/ReportSystemInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NezhaServiceServer).ReportSystemInfo(ctx, req.(*Host))
+		return srv.(ProbeServiceServer).ReportSystemInfo(ctx, req.(*Host))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NezhaService_ReportTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProbeService_ReportTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TaskResult)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NezhaServiceServer).ReportTask(ctx, in)
+		return srv.(ProbeServiceServer).ReportTask(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.NezhaService/ReportTask",
+		FullMethod: "/proto.ProbeService/ReportTask",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NezhaServiceServer).ReportTask(ctx, req.(*TaskResult))
+		return srv.(ProbeServiceServer).ReportTask(ctx, req.(*TaskResult))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NezhaService_RequestTask_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _ProbeService_RequestTask_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(Host)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(NezhaServiceServer).RequestTask(m, &nezhaServiceRequestTaskServer{stream})
+	return srv.(ProbeServiceServer).RequestTask(m, &ProbeServiceRequestTaskServer{stream})
 }
 
-type NezhaService_RequestTaskServer interface {
+type ProbeService_RequestTaskServer interface {
 	Send(*Task) error
 	grpc.ServerStream
 }
 
-type nezhaServiceRequestTaskServer struct {
+type ProbeServiceRequestTaskServer struct {
 	grpc.ServerStream
 }
 
-func (x *nezhaServiceRequestTaskServer) Send(m *Task) error {
+func (x *ProbeServiceRequestTaskServer) Send(m *Task) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _NezhaService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "proto.NezhaService",
-	HandlerType: (*NezhaServiceServer)(nil),
+var _ProbeService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "proto.ProbeService",
+	HandlerType: (*ProbeServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "ReportSystemState",
-			Handler:    _NezhaService_ReportSystemState_Handler,
+			Handler:    _ProbeService_ReportSystemState_Handler,
 		},
 		{
 			MethodName: "ReportSystemInfo",
-			Handler:    _NezhaService_ReportSystemInfo_Handler,
+			Handler:    _ProbeService_ReportSystemInfo_Handler,
 		},
 		{
 			MethodName: "ReportTask",
-			Handler:    _NezhaService_ReportTask_Handler,
+			Handler:    _ProbeService_ReportTask_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "RequestTask",
-			Handler:       _NezhaService_RequestTask_Handler,
+			Handler:       _ProbeService_RequestTask_Handler,
 			ServerStreams: true,
 		},
 	},
-	Metadata: "proto/nezha.proto",
+	Metadata: "proto/Probe.proto",
 }

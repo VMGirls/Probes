@@ -20,12 +20,12 @@ import (
 	"github.com/p14yground/go-github-selfupdate/selfupdate"
 	"google.golang.org/grpc"
 
-	"github.com/naiba/nezha/model"
-	"github.com/naiba/nezha/pkg/utils"
-	pb "github.com/naiba/nezha/proto"
-	"github.com/naiba/nezha/service/dao"
-	"github.com/naiba/nezha/service/monitor"
-	"github.com/naiba/nezha/service/rpc"
+	"github.com/VMGirls/Probe/model"
+	"github.com/VMGirls/Probe/pkg/utils"
+	pb "github.com/VMGirls/Probe/proto"
+	"github.com/VMGirls/Probe/service/dao"
+	"github.com/VMGirls/Probe/service/monitor"
+	"github.com/VMGirls/Probe/service/rpc"
 )
 
 var (
@@ -36,7 +36,7 @@ var (
 
 var (
 	reporting      bool
-	client         pb.NezhaServiceClient
+	client         pb.ProbeServiceClient
 	ctx            = context.Background()
 	delayWhenError = time.Second * 10       // Agent 重连间隔
 	updateCh       = make(chan struct{}, 0) // Agent 自动更新间隔
@@ -57,7 +57,7 @@ func doSelfUpdate() {
 	}()
 	v := semver.MustParse(version)
 	log.Println("Check update", v)
-	latest, err := selfupdate.UpdateSelf(v, "naiba/nezha")
+	latest, err := selfupdate.UpdateSelf(v, "VMGirls/Probe")
 	if err != nil {
 		log.Println("Binary update failed:", err)
 		return
@@ -134,7 +134,7 @@ func run() {
 			retry()
 			continue
 		}
-		client = pb.NewNezhaServiceClient(conn)
+		client = pb.NewProbeServiceClient(conn)
 		// 第一步注册
 		_, err = client.ReportSystemInfo(ctx, monitor.GetHost().PB())
 		if err != nil {
@@ -155,7 +155,7 @@ func run() {
 	}
 }
 
-func receiveTasks(tasks pb.NezhaService_RequestTaskClient) error {
+func receiveTasks(tasks pb.ProbeService_RequestTaskClient) error {
 	var err error
 	defer log.Printf("receiveTasks exit %v => %v", time.Now(), err)
 	for {

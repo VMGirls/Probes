@@ -6,7 +6,7 @@ import (
 	"html/template"
 	"time"
 
-	pb "github.com/naiba/nezha/proto"
+	pb "github.com/VMGirls/Probe/proto"
 )
 
 type Server struct {
@@ -22,7 +22,7 @@ type Server struct {
 	LastActive time.Time  `gorm:"-"`
 
 	TaskClose  chan error                        `gorm:"-" json:"-"`
-	TaskStream pb.NezhaService_RequestTaskServer `gorm:"-" json:"-"`
+	TaskStream pb.ProbeService_RequestTaskServer `gorm:"-" json:"-"`
 }
 
 func (s Server) Marshal() template.JS {

@@ -7,15 +7,15 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/naiba/nezha/model"
-	pb "github.com/naiba/nezha/proto"
-	"github.com/naiba/nezha/service/dao"
-	rpcService "github.com/naiba/nezha/service/rpc"
+	"github.com/VMGirls/Probe/model"
+	pb "github.com/VMGirls/Probe/proto"
+	"github.com/VMGirls/Probe/service/dao"
+	rpcService "github.com/VMGirls/Probe/service/rpc"
 )
 
 func ServeRPC(port uint) {
 	server := grpc.NewServer()
-	pb.RegisterNezhaServiceServer(server, &rpcService.NezhaHandler{
+	pb.RegisterProbeServiceServer(server, &rpcService.ProbeHandler{
 		Auth: &rpcService.AuthHandler{},
 	})
 	listen, err := net.Listen("tcp", fmt.Sprintf(":%d", port))

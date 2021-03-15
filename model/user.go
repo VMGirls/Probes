@@ -6,7 +6,7 @@ import (
 
 	"github.com/google/go-github/github"
 
-	"github.com/naiba/nezha/pkg/utils"
+	"github.com/VMGirls/Probe/pkg/utils"
 )
 
 type User struct {

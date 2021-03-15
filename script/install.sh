@@ -3,15 +3,15 @@
 #========================================================
 #   System Required: CentOS 7+ / Debian 8+ / Ubuntu 16+ /
 #     Arch 未测试
-#   Description: 哪吒监控安装脚本
-#   Github: https://github.com/naiba/nezha
+#   Description: 楠格监控安装脚本
+#   Github: https://github.com/VMGirls/Probe
 #========================================================
 
-NZ_BASE_PATH="/opt/nezha"
-NZ_DASHBOARD_PATH="${NZ_BASE_PATH}/dashboard"
-NZ_AGENT_PATH="${NZ_BASE_PATH}/agent"
-NZ_AGENT_SERVICE="/etc/systemd/system/nezha-agent.service"
-NZ_VERSION="v0.4.9"
+BASE_PATH="/etc/Probes"
+DASHBOARD_PATH="${BASE_PATH}/dashboard"
+AGENT_PATH="${BASE_PATH}/agent"
+AGENT_SERVICE="/etc/systemd/system/Probe-agent.service"
+VERSION="v2.0.0"
 
 red='\033[0;31m'
 green='\033[0;32m'
@@ -89,9 +89,9 @@ install_dashboard() {
 
     echo -e "> 安装面板"
 
-    # 哪吒监控文件夹
-    mkdir -p $NZ_DASHBOARD_PATH
-    chmod 777 -R $NZ_DASHBOARD_PATH
+    # 楠格监控文件夹
+    mkdir -p $DASHBOARD_PATH
+    chmod 777 -R $DASHBOARD_PATH
 
     command -v docker >/dev/null 2>&1
     if [[ $? != 0 ]]; then
@@ -130,19 +130,19 @@ install_agent() {
 
     echo -e "> 安装监控Agent"
 
-    # 哪吒监控文件夹
-    mkdir -p $NZ_AGENT_PATH
-    chmod 777 -R $NZ_AGENT_PATH
+    # 楠格监控文件夹
+    mkdir -p $AGENT_PATH
+    chmod 777 -R $AGENT_PATH
 
     echo -e "正在下载监控端"
-    wget -O nezha-agent_linux_${os_arch}.tar.gz https://${GITHUB_URL}/naiba/nezha/releases/latest/download/nezha-agent_linux_${os_arch}.tar.gz >/dev/null 2>&1
+    wget -O Probe-agent_linux_${os_arch}.tar.gz https://${GITHUB_URL}/VMGirls/Probe/releases/latest/download/Probe-agent_linux_${os_arch}.tar.gz >/dev/null 2>&1
     if [[ $? != 0 ]]; then
         echo -e "${red}Release 下载失败，请检查本机能否连接 ${GITHUB_URL}${plain}"
         return 0
     fi
-    tar xf nezha-agent_linux_${os_arch}.tar.gz &&
-        mv nezha-agent $NZ_AGENT_PATH &&
-        rm -rf nezha-agent_linux_${os_arch}.tar.gz README.md
+    tar xf Probe-agent_linux_${os_arch}.tar.gz &&
+        mv Probe-agent $AGENT_PATH &&
+        rm -rf Probe-agent_linux_${os_arch}.tar.gz README.md
 
     modify_agent_config 0
 
@@ -154,35 +154,35 @@ install_agent() {
 modify_agent_config() {
     echo -e "> 修改Agent配置"
 
-    wget -O $NZ_AGENT_SERVICE https://${GITHUB_RAW_URL}/naiba/nezha/master/script/nezha-agent.service >/dev/null 2>&1
+    wget -O $AGENT_SERVICE https://${GITHUB_RAW_URL}/VMGirls/Probe/master/script/Probe-agent.service >/dev/null 2>&1
     if [[ $? != 0 ]]; then
         echo -e "${red}文件下载失败，请检查本机能否连接 ${GITHUB_RAW_URL}${plain}"
         return 0
     fi
 
     echo "请先在管理面板上添加Agent，记录下密钥" &&
-        read -p "请输入一个解析到面板所在IP的域名（不可套CDN）: " nz_grpc_host &&
-        read -p "请输入面板RPC端口: (5555)" nz_grpc_port &&
-        read -p "请输入Agent 密钥: " nz_client_secret
-    if [[ -z "${nz_grpc_host}" || -z "${nz_client_secret}" ]]; then
+        read -p "请输入一个解析到面板所在IP的域名（不可套CDN）: " grpc_host &&
+        read -p "请输入面板RPC端口: (5555)" grpc_port &&
+        read -p "请输入Agent 密钥: " client_secret
+    if [[ -z "${grpc_host}" || -z "${client_secret}" ]]; then
         echo -e "${red}所有选项都不能为空${plain}"
         before_show_menu
         return 1
     fi
 
-    if [[ -z "${nz_grpc_port}" ]]; then
-        nz_grpc_port=5555
+    if [[ -z "${grpc_port}" ]]; then
+        grpc_port=5555
     fi
 
-    sed -i "s/nz_grpc_host/${nz_grpc_host}/" ${NZ_AGENT_SERVICE}
-    sed -i "s/nz_grpc_port/${nz_grpc_port}/" ${NZ_AGENT_SERVICE}
-    sed -i "s/nz_client_secret/${nz_client_secret}/" ${NZ_AGENT_SERVICE}
+    sed -i "s/grpc_host/${grpc_host}/" ${AGENT_SERVICE}
+    sed -i "s/grpc_port/${grpc_port}/" ${AGENT_SERVICE}
+    sed -i "s/client_secret/${client_secret}/" ${AGENT_SERVICE}
 
     echo -e "Agent配置 ${green}修改成功，请稍等重启生效${plain}"
 
     systemctl daemon-reload
-    systemctl enable nezha-agent
-    systemctl restart nezha-agent
+    systemctl enable Probe-agent
+    systemctl restart Probe-agent
 
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -193,15 +193,15 @@ modify_dashboard_config() {
     echo -e "> 修改面板配置"
 
     echo -e "正在下载 Docker 脚本"
-    wget -O ${NZ_DASHBOARD_PATH}/docker-compose.yaml https://${GITHUB_RAW_URL}/naiba/nezha/master/script/docker-compose.yaml >/dev/null 2>&1
+    wget -O ${DASHBOARD_PATH}/docker-compose.yaml https://${GITHUB_RAW_URL}/VMGirls/Probe/master/script/docker-compose.yaml >/dev/null 2>&1
     if [[ $? != 0 ]]; then
         echo -e "${red}下载脚本失败，请检查本机能否连接 ${GITHUB_RAW_URL}${plain}"
         return 0
     fi
 
-    mkdir -p $NZ_DASHBOARD_PATH/data
+    mkdir -p $DASHBOARD_PATH/data
 
-    wget -O ${NZ_DASHBOARD_PATH}/data/config.yaml https://${GITHUB_RAW_URL}/naiba/nezha/master/script/config.yaml >/dev/null 2>&1
+    wget -O ${DASHBOARD_PATH}/data/config.yaml https://${GITHUB_RAW_URL}/VMGirls/Probe/master/script/config.yaml >/dev/null 2>&1
     if [[ $? != 0 ]]; then
         echo -e "${red}下载脚本失败，请检查本机能否连接 ${GITHUB_RAW_URL}${plain}"
         return 0
@@ -209,37 +209,37 @@ modify_dashboard_config() {
 
     echo "关于 GitHub Oauth2 应用：在 https://github.com/settings/developers 创建，无需审核，Callback 填 http(s)://域名或IP/oauth2/callback" &&
         echo "关于 Gitee Oauth2 应用：在 https://gitee.com/oauth/applications 创建，无需审核，Callback 填 http(s)://域名或IP/oauth2/callback" &&
-        read -p "请输入 OAuth2 提供商(gitee/github，默认 github): " nz_oauth2_type &&
-        read -p "请输入 Oauth2 应用的 Client ID: " nz_github_oauth_client_id &&
-        read -p "请输入 Oauth2 应用的 Client Secret: " nz_github_oauth_client_secret &&
-        read -p "请输入 GitHub/Gitee 登录名作为管理员，多个以逗号隔开: " nz_admin_logins &&
-        read -p "请输入站点标题: " nz_site_title &&
-        read -p "请输入站点访问端口: (8008)" nz_site_port &&
-        read -p "请输入用于 Agent 接入的 RPC 端口: (5555)" nz_grpc_port
+        read -p "请输入 OAuth2 提供商(gitee/github，默认 github): " oauth2_type &&
+        read -p "请输入 Oauth2 应用的 Client ID: " github_oauth_client_id &&
+        read -p "请输入 Oauth2 应用的 Client Secret: " github_oauth_client_secret &&
+        read -p "请输入 GitHub/Gitee 登录名作为管理员，多个以逗号隔开: " admin_logins &&
+        read -p "请输入站点标题: " site_title &&
+        read -p "请输入站点访问端口: (8008)" site_port &&
+        read -p "请输入用于 Agent 接入的 RPC 端口: (5555)" grpc_port
 
-    if [[ -z "${nz_admin_logins}" || -z "${nz_github_oauth_client_id}" || -z "${nz_github_oauth_client_secret}" || -z "${nz_site_title}" ]]; then
+    if [[ -z "${admin_logins}" || -z "${github_oauth_client_id}" || -z "${github_oauth_client_secret}" || -z "${site_title}" ]]; then
         echo -e "${red}所有选项都不能为空${plain}"
         before_show_menu
         return 1
     fi
 
-    if [[ -z "${nz_site_port}" ]]; then
-        nz_site_port=8008
+    if [[ -z "${site_port}" ]]; then
+        site_port=8008
     fi
-    if [[ -z "${nz_grpc_port}" ]]; then
-        nz_grpc_port=5555
+    if [[ -z "${grpc_port}" ]]; then
+        grpc_port=5555
     fi
-    if [[ -z "${nz_oauth2_type}" ]]; then
-        nz_oauth2_type=github
+    if [[ -z "${oauth2_type}" ]]; then
+        oauth2_type=github
     fi
 
-    sed -i "s/nz_oauth2_type/${nz_oauth2_type}/" ${NZ_DASHBOARD_PATH}/data/config.yaml
-    sed -i "s/nz_admin_logins/${nz_admin_logins}/" ${NZ_DASHBOARD_PATH}/data/config.yaml
-    sed -i "s/nz_github_oauth_client_id/${nz_github_oauth_client_id}/" ${NZ_DASHBOARD_PATH}/data/config.yaml
-    sed -i "s/nz_github_oauth_client_secret/${nz_github_oauth_client_secret}/" ${NZ_DASHBOARD_PATH}/data/config.yaml
-    sed -i "s/nz_site_title/${nz_site_title}/" ${NZ_DASHBOARD_PATH}/data/config.yaml
-    sed -i "s/nz_site_port/${nz_site_port}/" ${NZ_DASHBOARD_PATH}/docker-compose.yaml
-    sed -i "s/nz_grpc_port/${nz_grpc_port}/" ${NZ_DASHBOARD_PATH}/docker-compose.yaml
+    sed -i "s/oauth2_type/${oauth2_type}/" ${DASHBOARD_PATH}/data/config.yaml
+    sed -i "s/admin_logins/${admin_logins}/" ${DASHBOARD_PATH}/data/config.yaml
+    sed -i "s/github_oauth_client_id/${github_oauth_client_id}/" ${DASHBOARD_PATH}/data/config.yaml
+    sed -i "s/github_oauth_client_secret/${github_oauth_client_secret}/" ${DASHBOARD_PATH}/data/config.yaml
+    sed -i "s/site_title/${site_title}/" ${DASHBOARD_PATH}/data/config.yaml
+    sed -i "s/site_port/${site_port}/" ${DASHBOARD_PATH}/docker-compose.yaml
+    sed -i "s/grpc_port/${grpc_port}/" ${DASHBOARD_PATH}/docker-compose.yaml
 
     echo -e "面板配置 ${green}修改成功，请稍等重启生效${plain}"
 
@@ -253,12 +253,12 @@ modify_dashboard_config() {
 restart_and_update() {
     echo -e "> 重启并更新面板"
 
-    cd $NZ_DASHBOARD_PATH
+    cd $DASHBOARD_PATH
     docker-compose pull
     docker-compose down
     docker-compose up -d
     if [[ $? == 0 ]]; then
-        echo -e "${green}哪吒监控 重启成功${plain}"
+        echo -e "${green}楠格监控 重启成功${plain}"
         echo -e "默认管理面板地址：${yellow}域名:站点访问端口${plain}"
     else
         echo -e "${red}重启失败，可能是因为启动时间超过了两秒，请稍后查看日志信息${plain}"
@@ -272,9 +272,9 @@ restart_and_update() {
 start_dashboard() {
     echo -e "> 启动面板"
 
-    cd $NZ_DASHBOARD_PATH && docker-compose up -d
+    cd $DASHBOARD_PATH && docker-compose up -d
     if [[ $? == 0 ]]; then
-        echo -e "${green}哪吒监控 启动成功${plain}"
+        echo -e "${green}楠格监控 启动成功${plain}"
     else
         echo -e "${red}启动失败，请稍后查看日志信息${plain}"
     fi
@@ -287,9 +287,9 @@ start_dashboard() {
 stop_dashboard() {
     echo -e "> 停止面板"
 
-    cd $NZ_DASHBOARD_PATH && docker-compose down
+    cd $DASHBOARD_PATH && docker-compose down
     if [[ $? == 0 ]]; then
-        echo -e "${green}哪吒监控 停止成功${plain}"
+        echo -e "${green}楠格监控 停止成功${plain}"
     else
         echo -e "${red}停止失败，请稍后查看日志信息${plain}"
     fi
@@ -302,7 +302,7 @@ stop_dashboard() {
 show_dashboard_log() {
     echo -e "> 获取面板日志"
 
-    cd $NZ_DASHBOARD_PATH && docker-compose logs -f
+    cd $DASHBOARD_PATH && docker-compose logs -f
 
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -312,9 +312,9 @@ show_dashboard_log() {
 uninstall_dashboard() {
     echo -e "> 卸载管理面板"
 
-    cd $NZ_DASHBOARD_PATH &&
+    cd $DASHBOARD_PATH &&
         docker-compose down
-    rm -rf $NZ_DASHBOARD_PATH
+    rm -rf $DASHBOARD_PATH
     clean_all
 
     if [[ $# == 0 ]]; then
@@ -325,7 +325,7 @@ uninstall_dashboard() {
 show_agent_log() {
     echo -e "> 获取Agent日志"
 
-    journalctl -xf -u nezha-agent.service
+    journalctl -xf -u Probe-agent.service
 
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -335,12 +335,12 @@ show_agent_log() {
 uninstall_agent() {
     echo -e "> 卸载Agent"
 
-    systemctl disable nezha-agent.service
-    systemctl stop nezha-agent.service
-    rm -rf $NZ_AGENT_SERVICE
+    systemctl disable Probe-agent.service
+    systemctl stop Probe-agent.service
+    rm -rf $AGENT_SERVICE
     systemctl daemon-reload
 
-    rm -rf $NZ_AGENT_PATH
+    rm -rf $AGENT_PATH
     clean_all
 
     if [[ $# == 0 ]]; then
@@ -351,7 +351,7 @@ uninstall_agent() {
 restart_agent() {
     echo -e "> 重启Agent"
 
-    systemctl restart nezha-agent.service
+    systemctl restart Probe-agent.service
 
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -359,13 +359,13 @@ restart_agent() {
 }
 
 clean_all() {
-    if [ -z "$(ls -A ${NZ_BASE_PATH})" ]; then
-        rm -rf ${NZ_BASE_PATH}
+    if [ -z "$(ls -A ${BASE_PATH})" ]; then
+        rm -rf ${BASE_PATH}
     fi
 }
 
 show_usage() {
-    echo "哪吒监控 管理脚本使用方法: "
+    echo "楠格监控 管理脚本使用方法: "
     echo "--------------------------------------------------------"
     echo "./nbdomain.sh                            - 显示管理菜单"
     echo "./nbdomain.sh install_dashboard          - 安装面板端"
@@ -386,8 +386,8 @@ show_usage() {
 
 show_menu() {
     echo -e "
-    ${green}哪吒监控管理脚本${plain} ${red}${NZ_VERSION}${plain}
-    --- https://github.com/naiba/nezha ---
+    ${green}楠格监控管理脚本${plain} ${red}${VERSION}${plain}
+    --- https://github.com/VMGirls/Probe ---
     ${green}0.${plain}  退出脚本
     ————————————————-
     ${green}1.${plain}  安装面板端

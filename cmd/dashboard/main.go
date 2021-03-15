@@ -9,11 +9,11 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	"github.com/naiba/nezha/cmd/dashboard/controller"
-	"github.com/naiba/nezha/cmd/dashboard/rpc"
-	"github.com/naiba/nezha/model"
-	pb "github.com/naiba/nezha/proto"
-	"github.com/naiba/nezha/service/dao"
+	"github.com/VMGirls/Probe/cmd/dashboard/controller"
+	"github.com/VMGirls/Probe/cmd/dashboard/rpc"
+	"github.com/VMGirls/Probe/model"
+	pb "github.com/VMGirls/Probe/proto"
+	"github.com/VMGirls/Probe/service/dao"
 )
 
 func init() {

@@ -15,8 +15,8 @@ import (
 	"github.com/shirou/gopsutil/v3/mem"
 	"github.com/shirou/gopsutil/v3/net"
 
-	"github.com/naiba/nezha/model"
-	"github.com/naiba/nezha/service/dao"
+	"github.com/VMGirls/Probe/model"
+	"github.com/VMGirls/Probe/service/dao"
 )
 
 type ipDotSbGeoIP struct {

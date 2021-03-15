@@ -1,6 +1,6 @@
 # 哪吒监控
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/naiba/nezha/Dashboard%20image?label=管理面板%20v0.4.12&logo=github&style=for-the-badge) ![Agent release](https://img.shields.io/github/v/release/naiba/nezha?color=brightgreen&label=Agent&style=for-the-badge&logo=github) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/naiba/nezha/Agent%20release?label=Agent%20CI&logo=github&style=for-the-badge) ![shell](https://img.shields.io/badge/安装脚本-v0.4.9-brightgreen?style=for-the-badge&logo=linux)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/VMGirls/Probe/Dashboard%20image?label=管理面板%20v0.4.12&logo=github&style=for-the-badge) ![Agent release](https://img.shields.io/github/v/release/VMGirls/Probe?color=brightgreen&label=Agent&style=for-the-badge&logo=github) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/VMGirls/Probe/Agent%20release?label=Agent%20CI&logo=github&style=for-the-badge) ![shell](https://img.shields.io/badge/安装脚本-v0.4.9-brightgreen?style=for-the-badge&logo=linux)
 
 :trollface: 哪吒监控 一站式轻监控轻运维系统。支持系统状态、HTTP(SSL 证书变更、即将到期、到期)、TCP、Ping 监控报警，命令批量执行和计划任务。
 
@@ -17,16 +17,16 @@
 **推荐配置：** 安装前解析 _两个域名_ 到面板服务器，一个作为 _公开访问_ ，可以 **接入CDN**，比如 (status.nai.ba)；另外一个作为安装 Agent 时连接 Dashboard 使用，**不能接入CDN** 直接暴露面板主机IP，比如（randomdashboard.nai.ba）。
 
 ```shell
-curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -o nezha.sh && chmod +x nezha.sh
-./nezha.sh
+curl -L https://raw.githubusercontent.com/VMGirls/Probe/master/script/install.sh -o Probe.sh && chmod +x Probe.sh
+./Probe.sh
 ```
 
 <details>
     <summary>国内镜像加速：（有缓存，版本更新不及时，能不用尽量不用，非作者维护）</summary>
 
 ```shell
-curl -L https://raw.sevencdn.com/naiba/nezha/master/script/install.sh -o nezha.sh && chmod +x nezha.sh
-CN=true ./nezha.sh
+curl -L https://raw.sevencdn.com/VMGirls/Probe/master/script/install.sh -o Probe.sh && chmod +x Probe.sh
+CN=true ./Probe.sh
 ```
 
 </details>
@@ -164,14 +164,14 @@ URL 里面也可放置占位符，请求时会进行简单的字符串替换。
 <details>
     <summary>如何进行数据迁移、备份恢复？</summary>
 
-数据储存在 `/opt/nezha` 文件夹中，迁移数据时打包这个文件夹，到新环境解压。然后执行一键脚本安装即可
+数据储存在 `/opt/Probe` 文件夹中，迁移数据时打包这个文件夹，到新环境解压。然后执行一键脚本安装即可
 
 </details>
 
 <details>
     <summary>如何使 OpenWrt/LEDE 自启动？来自 @艾斯德斯</summary>
 
-首先在 release 下载对应的二进制解压后放置到 `/root/nezha-agent`，然后 `chmod +x /root/nezha-agent` 赋予执行权限，然后创建 `/etc/init.d/nezha-agent`：
+首先在 release 下载对应的二进制解压后放置到 `/root/Probe-agent`，然后 `chmod +x /root/Probe-agent` 赋予执行权限，然后创建 `/etc/init.d/Probe-agent`：
 
 ```
 #!/bin/sh /etc/rc.common
@@ -181,13 +181,13 @@ USE_PROCD=1
 
 start_service() {
 	procd_open_instance
-	procd_set_param command /root/nezha-agent -i xxx -p 111 -d
+	procd_set_param command /root/Probe-agent -i xxx -p 111 -d
 	procd_set_param respawn
 	procd_close_instance
 }
 
 stop_service() {
-    killall nezha-agent
+    killall Probe-agent
 }
 
 restart() {
@@ -197,7 +197,7 @@ restart() {
 }
 ```
 
-赋予执行权限 `chmod +x /etc/init.d/nezha-agent` 然后启动服务 `/etc/init.d/nezha-agent enable && /etc/init.d/nezha-agent start`
+赋予执行权限 `chmod +x /etc/init.d/Probe-agent` 然后启动服务 `/etc/init.d/Probe-agent enable && /etc/init.d/Probe-agent start`
 
 </details>
 
@@ -250,7 +250,7 @@ restart() {
 
 ## 社区文章
 
-- [哪吒探针 - Windows 客户端安装](https://nyko.me/2020/12/13/nezha-windows-client.html)
+- [哪吒探针 - Windows 客户端安装](https://nyko.me/2020/12/13/Probe-windows-client.html)
 - [哪吒监控，一个便携服务器状态监控面板搭建教程，不想拥有一个自己的探针吗？](https://haoduck.com/644.html)
 - [哪吒监控：小鸡们的最佳探针](https://www.zhujizixun.com/2843.html) _（已过时）_
 - [>>更多教程](https://www.google.com/search?q="哪吒"%2B"面板%7C监控%7C探针"+"教程") (Google)

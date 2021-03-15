@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/go-ping/ping"
-	"github.com/naiba/nezha/pkg/utils"
+	"github.com/VMGirls/Probe/pkg/utils"
 	"github.com/shirou/gopsutil/v3/cpu"
 	"github.com/shirou/gopsutil/v3/disk"
 	"github.com/shirou/gopsutil/v3/host"

@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/naiba/nezha/model"
-	"github.com/naiba/nezha/service/dao"
+	"github.com/VMGirls/Probe/model"
+	"github.com/VMGirls/Probe/service/dao"
 )
 
 type AuthorizeOption struct {

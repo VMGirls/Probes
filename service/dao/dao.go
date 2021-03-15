@@ -9,8 +9,8 @@ import (
 	"github.com/robfig/cron/v3"
 	"gorm.io/gorm"
 
-	"github.com/naiba/nezha/model"
-	pb "github.com/naiba/nezha/proto"
+	"github.com/VMGirls/Probe/model"
+	pb "github.com/VMGirls/Probe/proto"
 )
 
 var Version = "v0.4.12" // ！！记得修改 README 重的 badge 版本！！

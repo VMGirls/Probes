@@ -11,11 +11,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/robfig/cron/v3"
 
-	"github.com/naiba/nezha/model"
-	"github.com/naiba/nezha/pkg/mygin"
-	"github.com/naiba/nezha/pkg/utils"
-	pb "github.com/naiba/nezha/proto"
-	"github.com/naiba/nezha/service/dao"
+	"github.com/VMGirls/Probe/model"
+	"github.com/VMGirls/Probe/pkg/mygin"
+	"github.com/VMGirls/Probe/pkg/utils"
+	pb "github.com/VMGirls/Probe/proto"
+	"github.com/VMGirls/Probe/service/dao"
 )
 
 type memberAPI struct {

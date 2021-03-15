@@ -6,16 +6,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/naiba/nezha/model"
-	pb "github.com/naiba/nezha/proto"
-	"github.com/naiba/nezha/service/dao"
+	"github.com/VMGirls/Probe/model"
+	pb "github.com/VMGirls/Probe/proto"
+	"github.com/VMGirls/Probe/service/dao"
 )
 
-type NezhaHandler struct {
+type ProbeHandler struct {
 	Auth *AuthHandler
 }
 
-func (s *NezhaHandler) ReportTask(c context.Context, r *pb.TaskResult) (*pb.Receipt, error) {
+func (s *ProbeHandler) ReportTask(c context.Context, r *pb.TaskResult) (*pb.Receipt, error) {
 	var err error
 	var clientID uint64
 	if clientID, err = s.Auth.Check(c); err != nil {
@@ -88,7 +88,7 @@ func (s *NezhaHandler) ReportTask(c context.Context, r *pb.TaskResult) (*pb.Rece
 	return &pb.Receipt{Proced: true}, nil
 }
 
-func (s *NezhaHandler) RequestTask(h *pb.Host, stream pb.NezhaService_RequestTaskServer) error {
+func (s *ProbeHandler) RequestTask(h *pb.Host, stream pb.ProbeService_RequestTaskServer) error {
 	var clientID uint64
 	var err error
 	if clientID, err = s.Auth.Check(stream.Context()); err != nil {
@@ -105,7 +105,7 @@ func (s *NezhaHandler) RequestTask(h *pb.Host, stream pb.NezhaService_RequestTas
 	}
 }
 
-func (s *NezhaHandler) ReportSystemState(c context.Context, r *pb.State) (*pb.Receipt, error) {
+func (s *ProbeHandler) ReportSystemState(c context.Context, r *pb.State) (*pb.Receipt, error) {
 	var clientID uint64
 	var err error
 	if clientID, err = s.Auth.Check(c); err != nil {
@@ -119,7 +119,7 @@ func (s *NezhaHandler) ReportSystemState(c context.Context, r *pb.State) (*pb.Re
 	return &pb.Receipt{Proced: true}, nil
 }
 
-func (s *NezhaHandler) ReportSystemInfo(c context.Context, r *pb.Host) (*pb.Receipt, error) {
+func (s *ProbeHandler) ReportSystemInfo(c context.Context, r *pb.Host) (*pb.Receipt, error) {
 	var clientID uint64
 	var err error
 	if clientID, err = s.Auth.Check(c); err != nil {

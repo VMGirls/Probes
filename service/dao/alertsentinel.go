@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/naiba/nezha/model"
+	"github.com/VMGirls/Probe/model"
 )
 
 // 报警规则

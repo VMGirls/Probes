@@ -1,8 +1,8 @@
 [Unit]
-Description=Nezha Agent
+Description=Probe Dashborad
 After=syslog.target
 After=network.target
-#After=nezha-dashboard.service
+After=mariadb.service mysqld.service postgresql.service memcached.service redis.service
 
 [Service]
 # Modify these two values and uncomment them if you have
@@ -12,10 +12,10 @@ After=network.target
 #LimitMEMLOCK=infinity
 #LimitNOFILE=65535
 Type=simple
-User=root
-Group=root
-WorkingDirectory=/opt/nezha/agent/
-ExecStart=/opt/nezha/agent/nezha-agent -d -s nz_grpc_host:nz_grpc_port -p nz_client_secret
+#User=root
+#Group=root
+WorkingDirectory=/etc/Probes/dashboard/
+ExecStart=/etc/Probes/dashboard/Probe-dashboard-linux-amd64
 Restart=always
 #Environment=DEBUG=true
 
