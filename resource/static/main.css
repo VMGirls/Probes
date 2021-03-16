@@ -57,7 +57,6 @@ a {
 .status.cards .ui.content.popup {
     border-radius: 5px;
     border: 1px solid transparent;
-
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -69,6 +68,7 @@ a {
     -webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .column {
@@ -273,7 +273,7 @@ color: #ff5722;
 }
 
 .ui.progress .bar {
-  min-width: 1.26em !important;
+  min-width: 1.75em !important;
   text-align: right;
   padding-right: 0.4em;
   line-height: 1.75em;
@@ -306,3 +306,45 @@ color: #ff5722;
 .service-status .warning {
   background-color: #ff9800 !important;
 }
+
+/** 状态监测页样式**/
+.ui.table {
+  font-size: 1em;
+  position: relative;
+  border-radius: 10px;
+  margin-right: .5em;
+  margin-bottom: .5em;
+  border: 1px solid transparent;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  background-color: #fafafa80;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  -webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.ui.table [class*="center aligned"], .ui.table[class*="center aligned"] {
+  background-color: rgb(255 255 255 / 0%);
+}
+
+.ui.button {
+      background: rgb(0 0 0 / 40%) none;
+}
+
+[data-tooltip]:after [
+  
+  border: 0px;
+  border-radius: 0px;
+  background: rgb(255 255 255 / 78%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+]
