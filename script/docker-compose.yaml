@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   dashboard:
-    image: ghcr.io/vmgirls/probe-dashboard
+    image: nangle/probe-dashboard
     restart: always
     volumes:
       - ./data:/dashboard/data
