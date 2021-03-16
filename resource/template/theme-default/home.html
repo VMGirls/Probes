@@ -175,7 +175,7 @@
             },
             formatByteSize(bs) {
                 const x = readableBytes(bs)
-                return x != "0" ? x : '0 KB'
+                return x != "NaN undefined" ? x : '0 KB'
             }
         }
     })
