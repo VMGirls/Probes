@@ -147,14 +147,14 @@
                     if (percent < 0) {
                         this.cache[percent].style['background-color'] = 'slategray'
                         this.cache[percent].class.offline = true
-                    } else if (percent < 51) {
-                        this.cache[percent].style['background-color'] = 'rgb(0, 235, 139)'
+                    } else if (percent < 71) {
+                        this.cache[percent].style['background-color'] = 'rgb(76,175,80)'
                         this.cache[percent].class.fine = true
-                    } else if (percent < 81) {
-                        this.cache[percent].style['background-color'] = 'orange'
+                    } else if (percent < 91) {
+                        this.cache[percent].style['background-color'] = '#ff9800'
                         this.cache[percent].class.warning = true
                     } else {
-                        this.cache[percent].style['background-color'] = 'crimson'
+                        this.cache[percent].style['background-color'] = '#f44336'
                         this.cache[percent].class.error = true
                     }
                 }
@@ -175,7 +175,7 @@
             },
             formatByteSize(bs) {
                 const x = readableBytes(bs)
-                return x != "NaN undefined" ? x : '0 KB'
+                return x != "0" ? x : '0 KB'
             }
         }
     })
@@ -215,6 +215,7 @@
 
     const wsProtocol = window.location.protocol == "https:" ? "wss" : "ws"
     const ws = new WebSocket(wsProtocol + '://' + window.location.host + '/ws');
+    /**
     ws.onopen = function (evt) {
         $.suiAlert({
             title: '实时通道建立',
@@ -224,6 +225,7 @@
             position: 'top-center',
         });
     }
+    **/
     ws.onmessage = function (evt) {
         const oldServers = statusCards.servers
         statusCards.servers = JSON.parse(evt.data)
@@ -241,6 +243,7 @@
         }
         statusCards.groups = groupingData(statusCards.servers, "Tag")
     }
+    /**
     ws.onclose = function () {
         $.suiAlert({
             title: '实时通道断开',
@@ -249,7 +252,7 @@
             time: '2',
             position: 'top-center',
         });
-    }
+    }**/
     $('.ui.accordion')
         .accordion({"exclusive": false})
     ;
