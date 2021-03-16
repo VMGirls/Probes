@@ -1,5 +1,5 @@
 # 哪吒监控
->> 自用修改版
+> 自用修改版
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/VMGirls/Probe/Dashboard%20image?label=管理面板%20v2.0.1&logo=github&style=for-the-badge) ![Agent release](https://img.shields.io/github/v/release/VMGirls/Probe?color=brightgreen&label=Agent&style=for-the-badge&logo=github) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/VMGirls/Probe/Agent%20release?label=Agent%20CI&logo=github&style=for-the-badge) ![shell](https://img.shields.io/badge/安装脚本-v2.0.1-brightgreen?style=for-the-badge&logo=linux)
 
